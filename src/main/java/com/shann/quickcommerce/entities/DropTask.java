@@ -5,12 +5,12 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "delivery_tasks")
+@Table(name = "delivery_drop_tasks")
 @Data
-public class Task extends BaseModel {
+public class DropTask extends BaseModel {
   private long customerId;
   @Enumerated(EnumType.ORDINAL)
   private TaskStatus taskStatus;
 
-  @Embedded private Location pickupLocation;
+  @Embedded private Location dropLocation;
 }

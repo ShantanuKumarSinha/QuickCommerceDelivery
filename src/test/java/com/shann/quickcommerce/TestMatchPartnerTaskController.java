@@ -7,9 +7,9 @@ import com.shann.quickcommerce.dtos.ResponseStatus;
 import com.shann.quickcommerce.entities.Location;
 import com.shann.quickcommerce.entities.Partner;
 import com.shann.quickcommerce.entities.PartnerTaskMapping;
-import com.shann.quickcommerce.entities.Task;
+import com.shann.quickcommerce.entities.PickUpTask;
 import com.shann.quickcommerce.repositories.PartnerRepository;
-import com.shann.quickcommerce.repositories.TaskRepository;
+import com.shann.quickcommerce.repositories.PickUpTaskRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,26 +26,26 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class TestMatchPartnerTaskController {
 
     @Autowired
-    private TaskRepository taskRepository;
+    private PickUpTaskRepository taskRepository;
     @Autowired
     private PartnerRepository partnerRepository;
     @Autowired
     private MatchPartnerTaskController matchPartnerTaskController;
 
-    private List<Task> tasks;
+    private List<PickUpTask> tasks;
     private List<Partner> partners;
 
     @BeforeEach
     public void insertDummyData(){
-        Task task1 = new Task();
+        PickUpTask task1 = new PickUpTask();
         task1.setCustomerId(1L);
         task1.setPickupLocation(new Location(10, 10));
 
-        Task task2 = new Task();
+        PickUpTask task2 = new PickUpTask();
         task2.setCustomerId(2L);
         task2.setPickupLocation(new Location(20, 20));
 
-        Task task3 = new Task();
+        PickUpTask task3 = new PickUpTask();
         task3.setCustomerId(3L);
         task3.setPickupLocation(new Location(30, 30));
 
@@ -91,7 +91,7 @@ public class TestMatchPartnerTaskController {
     public void testMatchPartnerTask_3_Partners_3_Tasks(){
         MatchPartnerTaskRequestDto requestDto = new MatchPartnerTaskRequestDto();
         requestDto.setPartnerIds(partners.stream().map(Partner::getId).toList());
-        requestDto.setTaskIds(tasks.stream().map(Task::getId).toList());
+        requestDto.setTaskIds(tasks.stream().map(PickUpTask::getId).toList());
 
         MatchPartnerTaskResponseDto matchPartnerTaskResponseDto = matchPartnerTaskController.matchPartnersAndTasks(requestDto);
         assertNotNull(matchPartnerTaskResponseDto, "Response should be not null");
@@ -112,7 +112,7 @@ public class TestMatchPartnerTaskController {
     public void testMatchPartnerTask_3_Partners_2_Tasks(){
         MatchPartnerTaskRequestDto requestDto = new MatchPartnerTaskRequestDto();
         requestDto.setPartnerIds(partners.stream().map(Partner::getId).toList());
-        requestDto.setTaskIds(tasks.stream().limit(2).map(Task::getId).toList());
+        requestDto.setTaskIds(tasks.stream().limit(2).map(PickUpTask::getId).toList());
 
         MatchPartnerTaskResponseDto matchPartnerTaskResponseDto = matchPartnerTaskController.matchPartnersAndTasks(requestDto);
         assertNotNull(matchPartnerTaskResponseDto, "Response should be not null");
@@ -133,7 +133,7 @@ public class TestMatchPartnerTaskController {
     public void testMatchPartnerTask_2_Partners_3_Tasks(){
         MatchPartnerTaskRequestDto requestDto = new MatchPartnerTaskRequestDto();
         requestDto.setPartnerIds(partners.stream().limit(2).filter(partner -> partner.getId() != 3L).map(Partner::getId).toList());
-        requestDto.setTaskIds(tasks.stream().map(Task::getId).toList());
+        requestDto.setTaskIds(tasks.stream().map(PickUpTask::getId).toList());
 
         MatchPartnerTaskResponseDto matchPartnerTaskResponseDto = matchPartnerTaskController.matchPartnersAndTasks(requestDto);
         assertNotNull(matchPartnerTaskResponseDto, "Response should be not null");
