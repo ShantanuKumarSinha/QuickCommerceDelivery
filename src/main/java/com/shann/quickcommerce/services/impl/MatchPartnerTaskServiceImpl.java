@@ -2,7 +2,7 @@ package com.shann.quickcommerce.services.impl;
 
 import com.shann.quickcommerce.entities.PartnerTaskMapping;
 import com.shann.quickcommerce.repositories.PartnerRepository;
-import com.shann.quickcommerce.repositories.TaskRepository;
+import com.shann.quickcommerce.repositories.PickUpTaskRepository;
 import com.shann.quickcommerce.services.MatchPartnerTaskService;
 import com.shann.quickcommerce.strategy.LocationMatchingStrategy;
 import java.util.List;
@@ -17,7 +17,7 @@ public class MatchPartnerTaskServiceImpl implements MatchPartnerTaskService {
 
   private LocationMatchingStrategy locationMatchingStrategy;
   private PartnerRepository partnerRepository;
-  private TaskRepository taskRepository;
+  private PickUpTaskRepository taskRepository;
 
   /**
    * Constructor for MatchPartnerTaskServiceImpl.
@@ -30,7 +30,7 @@ public class MatchPartnerTaskServiceImpl implements MatchPartnerTaskService {
   public MatchPartnerTaskServiceImpl(
       LocationMatchingStrategy locationMatchingStrategy,
       PartnerRepository partnerRepository,
-      TaskRepository taskRepository) {
+      PickUpTaskRepository taskRepository) {
     this.locationMatchingStrategy = locationMatchingStrategy;
     this.partnerRepository = partnerRepository;
     this.taskRepository = taskRepository;

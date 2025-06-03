@@ -5,7 +5,7 @@ insert into delivery_partners(latitude, longitude, partner_name, partner_status)
 (41.8781, -87.6298, 'Partner D', 0),
 (29.7604, -95.3698, 'Partner E', 2);
 
-insert into delivery_tasks(latitude, longitude, task_status, customer_id) values
+insert into delivery_pickup_tasks(latitude, longitude, task_status, customer_id) values
 (30.7749, -122.4194, 0, 1),
 (38.0522, -128.2437, 1, 2),
 (47.7128, -71.0060, 0, 3),
