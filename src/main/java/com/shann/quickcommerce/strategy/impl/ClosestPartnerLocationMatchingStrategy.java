@@ -3,7 +3,7 @@ package com.shann.quickcommerce.strategy.impl;
 import com.shann.quickcommerce.entities.Location;
 import com.shann.quickcommerce.entities.Partner;
 import com.shann.quickcommerce.entities.PartnerTaskMapping;
-import com.shann.quickcommerce.entities.PickUpTask;
+import com.shann.quickcommerce.entities.Task;
 import com.shann.quickcommerce.enums.PartnerStatus;
 import com.shann.quickcommerce.strategy.LocationMatchingStrategy;
 import com.shann.quickcommerce.utils.DistanceUtils;
@@ -26,7 +26,7 @@ public class ClosestPartnerLocationMatchingStrategy implements LocationMatchingS
    * @return
    */
   @Override
-  public List<PartnerTaskMapping> matchPartnerTask(List<Partner> partners, List<PickUpTask> tasks) {
+  public List<PartnerTaskMapping> matchPartnerTask(List<Partner> partners, List<Task> tasks) {
     List<PartnerTaskMapping> partnerTaskMappings = new ArrayList<>();
     tasks.forEach(
         task -> {
