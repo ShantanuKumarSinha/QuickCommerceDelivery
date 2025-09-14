@@ -27,7 +27,11 @@ public class BatchedTaskController {
            var routes = batchedTaskService.buildRoute(requestDto.getBatchedTaskId());
            responseDto.setRouteToBeTaken(routes);
            responseDto.setStatus(ResponseStatus.SUCCESS);
+        } catch (BatchedTaskNotFoundException exception) {
+            logger.error("Batched task not found: {}", exception.getMessage(), exception);
+            responseDto.setStatus(ResponseStatus.FAILURE);
         } catch (Exception exception) {
+            logger.error("An unexpected error occurred: {}", exception.getMessage(), exception);
             responseDto.setStatus(ResponseStatus.FAILURE);
         }
         return responseDto;
