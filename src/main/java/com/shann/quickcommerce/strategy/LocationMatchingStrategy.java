@@ -11,7 +11,6 @@ public interface LocationMatchingStrategy {
 
   /** * Matches a partner with a task based on the closest location.
    * @param partners the list of partners to match
-   * @param partners
    * @param tasks
    * @return
    */
