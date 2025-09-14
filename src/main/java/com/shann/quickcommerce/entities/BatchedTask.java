@@ -13,7 +13,7 @@ import lombok.Data;
 @Data
 public class BatchedTask extends BaseModel {
 
-  @OneToMany(fetch = FetchType.EAGER)
+  @OneToMany(fetch = FetchType.LAZY)
   private List<DropTask> tasks;
 
   private Date batchedAt;

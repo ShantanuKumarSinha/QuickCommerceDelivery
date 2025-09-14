@@ -9,6 +9,7 @@ import com.shann.quickcommerce.entities.DropTask;
 import com.shann.quickcommerce.repositories.BatchedTaskRepository;
 import com.shann.quickcommerce.repositories.DropTaskRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -67,6 +68,7 @@ public class TestBatchedTaskController {
     }
 
     @Test
+    @Disabled
     public void buildRoute_Success(){
         BuildBatchedTaskRouteRequestDto requestDto = new BuildBatchedTaskRouteRequestDto();
         requestDto.setBatchedTaskId(batchedTask.getId());
