@@ -17,5 +17,5 @@ public class PartnerTaskMapping extends BaseModel {
 
   @ManyToOne
   @JoinColumn(name = "task_id", referencedColumnName = "id", nullable = false)
-  private PickUpTask task;
+  private Task task;
 }
